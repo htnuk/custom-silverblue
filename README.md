@@ -1,4 +1,6 @@
-# base
+# Custom Silverblue Image
+
+This is based on [uBlue OS Base image](https://github.com/ublue-os/base).
 
 [![build-ublue](https://github.com/ublue-os/base/actions/workflows/build.yml/badge.svg)](https://github.com/ublue-os/base/actions/workflows/build.yml)
 

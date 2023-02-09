@@ -7,55 +7,41 @@ bios:
 changelogs:
   rpm-ostree db diff --changelogs
 
-distrobox-boxkit:
-  echo 'Creating Boxkit distrobox ...'
-  distrobox create --image ghcr.io/ublue-os/boxkit -n boxkit -Y
+distrobox-appbox:
+  echo 'Creating Appbox distrobox ...'
+  distrobox create --image fedoraproject.org/fedora-toolbox:37 -n appbox -Y
 
-distrobox-debian:
-  echo 'Creating Debian distrobox ...'
-  distrobox create --image quay.io/toolbx-images/debian-toolbox:unstable -n debian -Y
+distrobox-appbox:
+  echo 'Creating Fedbox distrobox ...'
+  distrobox create --image fedoraproject.org/fedora-toolbox:37 -n fedbox -Y
 
-distrobox-opensuse:
-  echo 'Creating openSUSE distrobox ...'
-  distrobox create --image quay.io/toolbx-images/opensuse-toolbox:tumbleweed -n opensuse -Y
- 
-distrobox-ubuntu:
-  echo 'Creating Ubuntu distrobox ...'
-  distrobox create --image quay.io/toolbx-images/ubuntu-toolbox:22.04 -n ubuntu -Y
-  
 setup-flatpaks:
   echo 'Setting up your flatpaks...'
   flatpak install -y --user \\
-  com.discordapp.Discord \\
-  com.mastermindzh.tidal-hifi \\
-  com.microsoft.Edge \\
-  com.plexamp.Plexamp \\
-  com.slack.Slack \\
-  com.todoist.Todoist \\
-  com.visualstudio.code \\
-  im.riot.Riot \\
-  no.mifi.losslesscut \\
-  org.standardnotes.standardnotes \\
-  tv.plex.PlexDesktop \\
-  us.zoom.Zoom  
+  ch.protonmail.protonmail-bridge \\
+  com.bitwarden.desktop \\
+  com.github.Eloston.UngoogledChromium \\
+  io.github.mimbrero.WhatsAppDesktop \\
+  io.github.peazip.PeaZip \\
+  io.gitlab.librewolf-community \\
+  org.cockpit_project.CockpitClient \\
+  org.cryptomator.Cryptomator \\
+  org.gimp.GIMP \\
+  org.gnome.Notes \\
+  org.remmina.Remmina \\
+  social.whalebird.WhalebirdDesktop
   
 setup-pwa:
   echo 'Giving browser permission to create PWAs (Progressive Web Apps)'
   # Add for your favorite chromium-based browser
-  flatpak override --user --filesystem=~/.local/share/applications --filesystem=~/.local/share/icons com.microsoft.Edge
+  flatpak override --user --filesystem=~/.local/share/applications --filesystem=~/.local/share/icons com.github.Eloston.UngoogledChromium
 
 setup-gaming:
   echo 'Setting up gaming experience ... lock and load.'
   flatpak install -y --user \\
-  com.discordapp.Discord \\
-  com.feaneron.Boatswain \\
   org.freedesktop.Platform.VulkanLayer.MangoHud//22.08 \\
-  org.freedesktop.Platform.VulkanLayer.OBSVkCapture//22.08 \\
   org.freedesktop.Platform.VulkanLayer.vkBasalt//22.08 \\
-  com.heroicgameslauncher.hgl \\
-  com.obsproject.Studio \\
-  com.obsproject.Studio.Plugin.OBSVkCapture \\
-  com.obsproject.Studio.Plugin.Gstreamer \\
+  net.lutris.Lutris \\
   com.usebottles.bottles \\
   com.valvesoftware.Steam \\
   com.valvesoftware.Steam.Utility.gamescope \\

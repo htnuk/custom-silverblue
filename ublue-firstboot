@@ -100,15 +100,6 @@ if [ "$?" != 0 ] ; then
 fi
 echo "80"
 
-echo "# Installing Font Downloader"
-/usr/bin/flatpak install --user --noninteractive flathub org.gustavoperedo.FontDownloader
-if [ "$?" != 0 ] ; then
-        zenity --error \
-          --text="Installing FontDownloader Failed"
-        exit 1
-fi
-echo "85"
-
 echo "# Installing Flatseal"
 /usr/bin/flatpak install --user --noninteractive flathub com.github.tchx84.Flatseal
 if [ "$?" != 0 ] ; then
@@ -118,11 +109,11 @@ if [ "$?" != 0 ] ; then
 fi
 echo "90"
 
-echo "# Installing Celluloid Media Player"
-/usr/bin/flatpak install --user --noninteractive flathub io.github.celluloid_player.Celluloid
+echo "# Installing VLC Media Player"
+/usr/bin/flatpak install --user --noninteractive flathub org.videolan.VLC
 if [ "$?" != 0 ] ; then
         zenity --error \
-          --text="Installing Celluloid Failed"
+          --text="Installing VLC Failed"
         exit 1
 fi
 echo "100"
