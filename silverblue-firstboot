@@ -1,0 +1,215 @@
+#!/bin/sh
+
+if test -e "$HOME"/.config/silverblue/firstboot-done; then
+    echo "Already ran"
+    exit 0
+fi
+
+(
+echo "# Waiting for Internet connection"
+until /usr/bin/ping -q -c 1 flathub.org; do sleep 1; done
+echo "00"
+
+echo "# Removing Filtered Flathub Repository"
+/usr/bin/flatpak remote-delete flathub --force ||:
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Removing Filtered Flathub Repo Failed"
+        exit 1
+fi
+echo "3"
+
+echo "# Enabling Flathub Repository"
+/usr/bin/flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Adding Flathub Repo Failed"
+        exit 1
+fi
+echo "5"
+
+echo "# Replacing Fedora Flatpaks with Flathub Ones (this may take a while)"
+/usr/bin/flatpak install --user --noninteractive org.gnome.Platform//43
+/usr/bin/flatpak install --user --noninteractive --reinstall flathub $(flatpak list --app-runtime=org.fedoraproject.Platform --columns=application | tail -n +1 )
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Replacing Fedora Flatpaks Failed"
+        exit 1
+fi
+echo "20"
+
+echo "Removing all preinstalled Flatpaks"
+/usr/bin/flatpak remove --system --noninteractive --all ||:
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Removing all preinstalled flatpaks failed"
+        exit 1
+fi
+echo "25"
+
+echo "# Removing Fedora Flatpak Repository"
+/usr/bin/flatpak remote-delete fedora --force ||:
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Removing Fedora Flatpak Repo Failed"
+        exit 1
+fi
+echo "30"
+
+echo "# Installing Bitwarden"
+/usr/bin/flatpak install --user --noninteractive flathub com.bitwarden.desktop
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Installing Bitwarden Failed"
+        exit 1
+fi
+echo "35"
+
+echo "# Installing Cryptomator"
+/usr/bin/flatpak install --user --noninteractive flathub org.cryptomator.Cryptomator
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Installing Cryptomator Failed"
+        exit 1
+fi
+echo "40"
+
+echo "# Installing DejaDup Backup"
+/usr/bin/flatpak install --user --noninteractive flathub org.gnome.DejaDup
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Installing DejaDup Failed"
+        exit 1
+fi
+echo "45"
+
+echo "# Installing Extension Manager"
+/usr/bin/flatpak install --user --noninteractive flathub com.mattjakeman.ExtensionManager
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Installing Extension Manager Failed"
+        exit 1
+fi
+echo "50"
+
+echo "# Installing Flatseal"
+/usr/bin/flatpak install --user --noninteractive flathub com.github.tchx84.Flatseal
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Installing Flatseal Failed"
+        exit 1
+fi
+echo "55"
+
+echo "# Installing GIMP"
+/usr/bin/flatpak install --user --noninteractive flathub org.gimp.GIMP
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Installing GIMP Failed"
+        exit 1
+fi
+echo "60"
+
+echo "# Installing LibreOffice"
+/usr/bin/flatpak install --user --noninteractive flathub org.libreoffice.LibreOffice
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Installing LibreOffice Failed"
+        exit 1
+fi
+echo "65"
+
+echo "# Installing Firefox"
+/usr/bin/flatpak install --user --noninteractive flathub org.mozilla.firefox
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Installing Firefox Failed"
+        exit 1
+fi
+echo "70"
+
+echo "# Installing Thunderbird"
+/usr/bin/flatpak install --user --noninteractive flathub org.mozilla.Thunderbird
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Installing Thunderbird Failed"
+        exit 1
+fi
+echo "75"
+
+echo "# Installing Peazip"
+/usr/bin/flatpak install --user --noninteractive flathub io.github.peazip.PeaZip
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Installing Peazip Failed"
+        exit 1
+fi
+echo "80"
+
+echo "# Installing Protonmail Bridge"
+/usr/bin/flatpak install --user --noninteractive flathub ch.protonmail.protonmail-bridge
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Installing Protonmail Bridge Failed"
+        exit 1
+fi
+echo "85"
+
+echo "# Installing Remmina"
+/usr/bin/flatpak install --user --noninteractive flathub org.remmina.Remmina
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Installing Remmina Failed"
+        exit 1
+fi
+echo "90"
+
+echo "# Installing Ungoogled Chromium"
+/usr/bin/flatpak install --user --noninteractive flathub com.github.Eloston.UngoogledChromium
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Installing Ungoogled Chromium Failed"
+        exit 1
+fi
+echo "95"
+
+echo "# Installing VLC Media Player"
+/usr/bin/flatpak install --user --noninteractive flathub org.videolan.VLC
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Installing VLC Failed"
+        exit 1
+fi
+echo "100"
+
+echo "# Installing Whalebird Desktop"
+/usr/bin/flatpak install --user --noninteractive flathub social.whalebird.WhalebirdDesktop
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Installing Whalebird Desktop Failed"
+        exit 1
+fi
+echo "105"
+
+echo "# Installing WhatsApp Desktop"
+/usr/bin/flatpak install --user --noninteractive flathub social.whalebird.WhalebirdDesktop
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Installing WhatsApp Desktop Failed"
+        exit 1
+fi
+echo "110"
+
+echo "# Reticulating Final Splines"
+mkdir -p "$HOME"/.config/silverblue/
+touch "$HOME"/.config/silverblue/firstboot-done
+cp -n /etc/justfile "$HOME"/.justfile
+
+) | 
+     
+   zenity --progress --title="Silverblue Desktop Firstboot" --percentage=0 --auto-close --no-cancel --width=300
+
+if [ "$?" != 0 ] ; then
+        zenity --error \
+          --text="Firstboot Configuration Error"
+fi

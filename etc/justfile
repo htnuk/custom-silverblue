@@ -11,26 +11,10 @@ distrobox-appbox:
   echo 'Creating Appbox distrobox ...'
   distrobox create --image fedoraproject.org/fedora-toolbox:37 -n appbox -Y
 
-distrobox-appbox:
+distrobox-fedbox:
   echo 'Creating Fedbox distrobox ...'
   distrobox create --image fedoraproject.org/fedora-toolbox:37 -n fedbox -Y
 
-setup-flatpaks:
-  echo 'Setting up your flatpaks...'
-  flatpak install -y --user \\
-  ch.protonmail.protonmail-bridge \\
-  com.bitwarden.desktop \\
-  com.github.Eloston.UngoogledChromium \\
-  io.github.mimbrero.WhatsAppDesktop \\
-  io.github.peazip.PeaZip \\
-  io.gitlab.librewolf-community \\
-  org.cockpit_project.CockpitClient \\
-  org.cryptomator.Cryptomator \\
-  org.gimp.GIMP \\
-  org.gnome.Notes \\
-  org.remmina.Remmina \\
-  social.whalebird.WhalebirdDesktop
-  
 setup-pwa:
   echo 'Giving browser permission to create PWAs (Progressive Web Apps)'
   # Add for your favorite chromium-based browser

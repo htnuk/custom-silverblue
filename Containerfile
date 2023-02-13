@@ -5,10 +5,10 @@ FROM quay.io/fedora-ostree-desktops/silverblue:${FEDORA_MAJOR_VERSION}
 
 COPY etc /etc
 
-COPY ublue-firstboot /usr/bin
+COPY silverblue-firstboot /usr/bin
 
 RUN rpm-ostree override remove firefox firefox-langpacks && \
-    rpm-ostree install distrobox gnome-tweaks just && \
+    rpm-ostree install arm-image-installer distrobox libvirt virt-manager zsh just && \
     sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf && \
     systemctl enable rpm-ostreed-automatic.timer && \
     systemctl enable flatpak-automatic.timer && \
