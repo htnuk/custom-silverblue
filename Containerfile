@@ -8,7 +8,7 @@ COPY etc /etc
 COPY silverblue-firstboot /usr/bin
 
 RUN rpm-ostree override remove firefox firefox-langpacks && \
-    rpm-ostree install arm-image-installer distrobox libvirt virt-manager zsh just && \
+    rpm-ostree install distrobox just && \
     sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf && \
     systemctl enable rpm-ostreed-automatic.timer && \
     systemctl enable flatpak-automatic.timer && \
