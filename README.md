@@ -1,6 +1,6 @@
 # Custom Silverblue Image
 
-This is a customised Fedora Silverblue image based on the work by [uBlue](https://github.com/ublue-os/base).
+This is a customised Fedora Silverblue image based on the work by [uBlue](https://ublue.it/).
 
 ## Usage
 
@@ -16,15 +16,13 @@ sudo rpm-ostree rebase --experimental ostree-unverified-registry:ghcr.io/htnuk/c
 - Adds the following packages to the base image:
   - Arm Image Installer
   - Distrobox
-  - Libvirt
-  - Virt Manager
   - ZSH
 - Sets automatic staging of updates for the system
 - Sets Flatpaks to update twice a day
 
 ## Applications
 
-- Core GNOME Applications installed from Flathub:
+- Core GNOME Applications are replaced with Flathub equivalents:
   - GNOME Calculator
   - Calendar
   - Characters
@@ -42,7 +40,7 @@ sudo rpm-ostree rebase --experimental ostree-unverified-registry:ghcr.io/htnuk/c
   - EOG
   - Font Viewer
 
-- All applications installed per user instead of system wide, not on the base image:
+- The following additional applications are installed:
   - Bitwarden
   - Cockpit Client
   - Cryptomator
@@ -51,7 +49,6 @@ sudo rpm-ostree rebase --experimental ostree-unverified-registry:ghcr.io/htnuk/c
   - Flatseal
   - GIMP
   - Libreoffice
-  - Librewolf
   - Mozilla Firefox
   - Mozilla Thunderbird
   - PeaZip
@@ -74,7 +71,6 @@ After that run the following commands:
 - Set up distroboxes for the following images:
   - `just distrobox-appbox`
   - `just distrobox-fedbox`
-- `just setup-flatpaks` - Install a selection of flatpaks, use this section to add your own apps
 - `just setup-gaming` - Install Steam, Lutris, Bottles, and ProtonUp-Qt. MangoHud is installed and enabled by default, hit right Shift-F12 to toggle
 - `just update` - Update rpm-ostree, flatpaks, and distroboxes in one command
 
@@ -92,6 +88,6 @@ If you're forking this repo you should [read the docs](https://docs.github.com/e
 
 # Making your Own
 
-1. Visit the [uBlue repository](https://github.com/ublue-os/base)
+1. Visit the [uBlue-os base repository](https://github.com/ublue-os/base)
 2. Click the `Use this template` button.
 3. Follow the instructions in the README.md

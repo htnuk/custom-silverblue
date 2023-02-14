@@ -192,7 +192,7 @@ fi
 echo "105"
 
 echo "# Installing WhatsApp Desktop"
-/usr/bin/flatpak install --user --noninteractive flathub social.whalebird.WhalebirdDesktop
+/usr/bin/flatpak install --user --noninteractive flathub io.github.mimbrero.WhatsAppDesktop
 if [ "$?" != 0 ] ; then
         zenity --error \
           --text="Installing WhatsApp Desktop Failed"
