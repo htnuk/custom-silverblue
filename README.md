@@ -17,64 +17,17 @@ sudo rpm-ostree rebase --experimental ostree-unverified-registry:ghcr.io/htnuk/c
   - Arm Image Installer
   - Distrobox
   - ZSH
+  - Ansible
 - Sets automatic staging of updates for the system
 - Sets Flatpaks to update twice a day
 
 ## Applications
 
-- Core GNOME Applications are replaced with Flathub equivalents:
-  - GNOME Calculator
-  - Calendar
-  - Characters
-  - Connections
-  - Contacts
-  - Evince
-  - Firmware
-  - Logs
-  - Maps
-  - Nautilus Previewer
-  - Text Editor
-  - Weather
-  - Baobab
-  - Clocks
-  - EOG
-  - Font Viewer
-
-- The following additional applications are installed:
-  - Bitwarden
-  - Cockpit Client
-  - Cryptomator
-  - DejaDup
-  - Extension Manager
-  - Flatseal
-  - GIMP
-  - Libreoffice
-  - Mozilla Firefox
-  - Mozilla Thunderbird
-  - PeaZip
-  - Protonmail Bridge
-  - Remmina
-  - Ungoogled Chromium
-  - VLC Media Player
-  - Whalebird Desktop
-  - WhatsApp Desktop
+Core GNOME Applications are replaced with Flathub equivalents in addition to the installation of a number of other useful applications. PWA's are enabled through Ungoogled Chromium.
 
 ## Further Customization
 
-The `just` task runner is included for further customization after first boot.
-It will copy the template from `/etc/justfile` to your home directory.
-After that run the following commands:
-
-- `just` - Show all tasks, more will be added in the future
-- `just bios` - Reboot into the system bios (Useful for dualbooting)
-- `just changelogs` - Show the changelogs of the pending update
-- Set up distroboxes for the following images:
-  - `just distrobox-appbox`
-  - `just distrobox-fedbox`
-- `just setup-gaming` - Install Steam, Lutris, Bottles, and ProtonUp-Qt. MangoHud is installed and enabled by default, hit right Shift-F12 to toggle
-- `just update` - Update rpm-ostree, flatpaks, and distroboxes in one command
-
-Check the [just website](https://just.systems) for tips on modifying and adding your own recipes. 
+...
   
 ## Verification
 
